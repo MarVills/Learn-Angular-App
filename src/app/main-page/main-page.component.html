@@ -1,0 +1,35 @@
+<i class="fa-solid fa-bars"></i>
+<div class=" center-items">
+    <!-- <div class="center-items">
+        <h1>Home Page</h1>
+    </div> -->
+    
+    <mat-drawer-container class="example-container" autosize>
+         <div class="center-items">
+            <h1>Home Page</h1><br><br>
+        </div>
+        <div class="center-items">
+            <h3>Click the button on the left side to show sidebar to navigate in to different social sites.</h3>
+        </div>
+        <mat-drawer #drawer class="example-sidenav" mode="side">
+          <p>Route to Different Pages</p>
+          <button (click)="gotoFb('facebook')" mat-raised-button>Facebook</button> <br><br>
+          <button (click)="gotoFb('twitter')" mat-raised-button>Twitter</button> <br><br>
+          <button (click)="gotoFb('instagram')" mat-raised-button>Instagram</button> <br><br>
+          <button (click)="gotoFb('telegram')" mat-raised-button>Telegram</button> <br><br>
+          <button (click)="gotoFb('tiktok')" mat-raised-button>Tiktok</button> <br><br>
+          <button (click)="gotoFb('linkedin')" mat-raised-button>Linkedin</button> <br><br>
+        </mat-drawer>
+      
+        <div class="example-sidenav-content">
+          <!-- <button type="text" mat-button (click)="drawer.toggle()">
+            More Navigations
+          </button> -->
+          <!-- <i class="fa-solid fa-bars">bars</i> -->
+          <!-- <i class="fa fa-bars" aria-hidden="true"></i> -->
+          <button (click)="drawer.toggle()" mat-icon-button color="black" aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </mat-drawer-container>
+</div>

@@ -1,0 +1,26 @@
+/* .main-container{
+      
+} */
+.center-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: static;
+}
+.example-container {
+    width:  100vw;
+    height: 91vh;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    /* height: 100%; */
+    align-items: left;
+    justify-content: left;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
