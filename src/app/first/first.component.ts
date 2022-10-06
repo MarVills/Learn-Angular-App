@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AppComponent } from '../app.component';
 import { ShowHideButtonServiceService } from '../show-hide-button-service.service';
-import { ShowHide } from '../showHide';
 
 @Component({
   selector: 'app-first',

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { DialogOverviewExampleDialog, MainPageComponent } from './main-page/main-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +17,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ShowHideButtonServiceService } from './show-hide-button-service.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { ShowHideButtonServiceService } from './show-hide-button-service.service
     SecondComponent,
     MainPageComponent,
     ForgotPasswordComponent,
+    DialogOverviewExampleDialog,
     
   ],
   imports: [
@@ -39,6 +43,8 @@ import { ShowHideButtonServiceService } from './show-hide-button-service.service
     MatSidenavModule,
     FontAwesomeModule,
     MatIconModule,
+    MatDialogModule,
+    FormsModule,
   ],
   providers: [ShowHideButtonServiceService],
   bootstrap: [AppComponent]

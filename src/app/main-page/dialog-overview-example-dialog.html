@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Add Problem Solution {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>Enter Code Problem</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Code Problem</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Solution Link of the Code Problem</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Cancel</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()"></button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add</button>
+</div>

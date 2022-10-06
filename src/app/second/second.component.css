@@ -2,7 +2,13 @@
     display: flex;
     justify-content: center;
     /* direction: unset; */
-    margin-top: 20vh;
+    /* margin-top: 20vh; */
+    padding-top: 10vh;
+    color: #fff;
+    background-image: url("../../assets/AngularBG.jpg");  
+    background-size: 100% ;  
+    background-size: cover; 
+    height: 100vh;
 }
 .header-title{
   font-weight: bold;
@@ -10,6 +16,7 @@
 }
 .example-card {
     max-width: 500px;
+    max-height: 60vh;
   }
   
 .example-header-image {

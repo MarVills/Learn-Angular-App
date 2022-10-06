@@ -1,5 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 
 @Component({
   selector: 'app-main-page',
@@ -10,6 +18,13 @@ export class MainPageComponent implements OnInit {
 
   showFiller = false;
   filmIcon = faFilm;
+  animal?: string ;
+  name?: string ;
+
+  constructor(public dialog: MatDialog) { }
+
+  ngOnInit(): void {
+  }
 
   gotoFb(page: String){
     if(page === "facebook"){
@@ -37,13 +52,34 @@ export class MainPageComponent implements OnInit {
       default:
           console.log("No url for this page!");
           break;
+    }
   }
-    
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: './dialog-overview-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+openDialog: any;
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+

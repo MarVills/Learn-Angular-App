@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { ShowHideButtonServiceService } from './show-hide-button-service.service';
-import { ShowHide } from './showHide';
 
 @Component({
   selector: 'app-root',
