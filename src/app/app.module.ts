@@ -15,7 +15,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { ShowHideButtonServiceService } from './show-hide-button-service.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import {MatIconModule} from '@angular/material/icon';
     FontAwesomeModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [ShowHideButtonServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

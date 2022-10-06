@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { ShowHide } from './showHide';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShowHideButtonServiceService {
-  public show:boolean = false;
-  public buttonName:any = 'Show';
+  constructor() { }
+  show:boolean = true;
 
-  // constructor() { }
-
-  toggle(showData: boolean) {
-    this.show = !this.show;
+  setShow(isShow: boolean){
+    this.show = !isShow;
+  }
+  getShow(){
     return this.show;
   }
 }

@@ -8,11 +8,17 @@ import { ShowHide } from './showHide';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public show:boolean = false;
-  public buttonName:any = 'Show';
-  @Input() showHide?: ShowHide;
+  
+  show: boolean = false;
 
   constructor(public showHideButtonService: ShowHideButtonServiceService) { }
+  isShow(){
+    return this.showHideButtonService.getShow();
+  }
+
+  setShow(show: boolean){
+    this.showHideButtonService.setShow(false)
+  }
   
 
   title = 'routing_app';
