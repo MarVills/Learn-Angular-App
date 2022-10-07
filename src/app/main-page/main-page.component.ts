@@ -31,9 +31,6 @@ export class MainPageComponent implements OnInit {
   }
 
   gotoFb(page: String){
-    // if(page === "facebook"){
-    //   window.location.href ='https://facebook.com';
-    // }
     switch (page) {
       case 'facebook':
         window.location.href ='https://facebook.com';
@@ -60,8 +57,7 @@ export class MainPageComponent implements OnInit {
   }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      // data: {problem: this.name, animal: this.animal},
+      width: '500px',
       data: {prob: this.problem, sol: this.solution},
     
     });

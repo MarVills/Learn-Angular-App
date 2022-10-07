@@ -5,10 +5,10 @@ import { ShowHideButtonServiceService } from '../show-hide-button-service.servic
 
 @Component({
   selector: 'app-first',
-  templateUrl: './first.component.html',
-  styleUrls: ['./first.component.css']
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css']
 })
-export class FirstComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
 
   constructor(public isShow: ShowHideButtonServiceService) { }
 

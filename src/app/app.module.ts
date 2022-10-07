@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
 import { DialogOverviewExampleDialog, MainPageComponent } from './main-page/main-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
@@ -19,16 +17,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { ShowHideButtonServiceService } from './show-hide-button-service.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent,
-    SecondComponent,
     MainPageComponent,
     ForgotPasswordComponent,
     DialogOverviewExampleDialog,
+    LoginPageComponent,
+    RegisterPageComponent,
     
   ],
   imports: [
@@ -46,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     MatDialogModule,
     FormsModule,
   ],
+  exports: [],
   providers: [ShowHideButtonServiceService],
   bootstrap: [AppComponent]
 })

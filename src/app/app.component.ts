@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ShowHideButtonServiceService } from './show-hide-button-service.service';
+import { RouterModule,Routes, Router }from '@angular/router'; 
+
 
 @Component({
   selector: 'app-root',
@@ -7,17 +9,22 @@ import { ShowHideButtonServiceService } from './show-hide-button-service.service
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  show: boolean = false;
 
-  constructor(public showHideButtonService: ShowHideButtonServiceService) { }
+  constructor(public showHideButtonService: ShowHideButtonServiceService, public router: Router) { }
+
+  ngOnInit() {
+    this.router.navigate(['/login']);
+  }
+
   isShow(){
     return this.showHideButtonService.getShow();
   }
 
   setShow(show: boolean){
-    this.showHideButtonService.setShow(false)
+    this.showHideButtonService.setShow(show)
   }
+
+  
   
 
   title = 'routing_app';
