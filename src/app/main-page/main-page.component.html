@@ -39,8 +39,12 @@
           <li *ngFor="let link of links">
             <button [class.selected]="link === selectedLink" (click)="onSelect(link)" type="button">
               <span class="badge">{{link.id}}</span>
-              <span class="name">{{link.problem}}</span>
+              <span class="name">{{link.name}}</span>
             </button>
+            <div class="action-buttons center-items">
+              <button  (click)="onDelete(link.id)" class="update-button">Delete</button>
+              <button class="delete-button">Update</button>
+            </div>
           </li>
         </ul>
        </div>
@@ -52,5 +56,31 @@
           <input id="hero-name" [(ngModel)]="selectedLink.problem" placeholder="name">
         </div>
       </div> -->
+      <div class="center-items">
+        <h1>Add Solution Link</h1>
+      </div>
+      <div class="center-items">
+        <form (ngSubmit)="onSubmit(dataForm.value)" #dataForm="ngForm" >
+          <input 
+          ngModel 
+          name="name"
+          id="name" 
+          placeholder="name"
+          ><br/><br/>
+          <input
+          ngModel  
+          name="image_link"
+          id="image-link" 
+          placeholder="image link"
+          ><br/><br/>
+          <input
+          ngModel  
+          name="price"
+          id="price" 
+          placeholder="price"
+          ><br/><br/>
+          <button type="submit">Add</button>
+        </form>
+      </div>
       </mat-drawer-container>
 </div>

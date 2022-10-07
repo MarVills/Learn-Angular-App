@@ -3,6 +3,9 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SOLUTIONLINKS } from '../mock-solution-data';
 import { Link } from '../mock-solution-data';
+import { NgForm } from '@angular/forms';
+import { CRUDdataService } from '../services/cruddata.service';
+import { Observable,Subscription, interval } from 'rxjs';
 
 export interface DialogData {
   problem: string;
@@ -24,10 +27,19 @@ export class MainPageComponent implements OnInit {
   links = SOLUTIONLINKS;
   selectedLink?: Link;
   tempMap:{[K: string]: string[]}={};
+  
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,private crudService: CRUDdataService) { }
 
   ngOnInit(): void {
+    this.crudService.getDataList().subscribe((response)=>{
+      console.log(response.data)
+      for (var  data of response.data) {
+        this.links.push(data)
+      }
+      console.log(this.links)
+
+    })
   }
 
   gotoFb(page: String){
@@ -57,27 +69,33 @@ export class MainPageComponent implements OnInit {
   }
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '500px',
+      width: '250px',
       data: {prob: this.problem, sol: this.solution},
     
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.tempMap["problem"].push(result.problem);
-      // this.tempMap["solution"].push(result.solution);
-      // console.log(result);
-      // console.log(result);
       console.log('The dialog was closed');
-      // this.problem = result;
-      // console.log(result.get())
-      // console.log(result.sol)
     });
     
   }
+  onSubmit(linkData: any){
+    console.log("something")
+    this.crudService.addData(linkData).subscribe((result)=>{
+      console.log(result)
+    })
+}
 
-  onSelect(link: Link): void {
-    // this.selectedLink = link;
-    window.location.href = link.solution;
+  onSelect(link: any): void {
+    // this.selectedLink = link.imageLink;
+    window.location.href = link.image_link;
+    // console.log(link.image_link)
+    // this.onDelete(link.id)
+  }
+  onDelete(id:number){
+    this.crudService.deleteData(id).subscribe((response)=>{
+      console.log(response)
+    })
   }
 }
 
@@ -90,13 +108,21 @@ openDialog: any;
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private crudService: CRUDdataService,
+  
   ) {}
   
   
   datas?:any
   onNoClick(): void {
-    datas:this.dialogRef.close(this.dialogRef);
-    console.log(this.datas)
+    this.datas = this.dialogRef.close(this.dialogRef);
   }
+
+  onSubmit(linkData: any){
+    // console.log("something")
+    // console.log(this.crudService.addData(linkData))
+  }
+
+  
 }
 

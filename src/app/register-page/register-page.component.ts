@@ -13,9 +13,9 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   onRegister(data: NgForm){
-    this.registerService.postUserData(data)
+    console.log(this.registerService.postUserData(data))
   }
 
 }

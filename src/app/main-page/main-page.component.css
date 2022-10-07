@@ -25,6 +25,12 @@
     padding: 20px;
   }
 
+  .text-field {
+    /* min-width: 300px;
+    max-width: 700px; */
+    width: 100%;
+  }
+
   .add_button{
     position:fixed;
     bottom: 0;
@@ -115,3 +121,13 @@
 .heroes .name {
   align-self: center;
 }
+.heroes .action-button {
+  width:100px;
+  align-self: center;
+  align-items: center;
+  background-color: green;
+  padding: 20px;
+}
+
+
+

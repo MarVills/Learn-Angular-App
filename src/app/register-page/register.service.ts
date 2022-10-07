@@ -10,10 +10,13 @@ export class RegisterService {
   constructor(private registerUserService: RegisterUserService) { }
 
   postUserData(fromUserdata: any){
-    this.registerUserService.registerUser(fromUserdata).subscribe((response)=>{
-      console.log(response)
-      // console.log(respo/nse)
-      return response;
-    });
+    return this.registerUserService.registerUser(fromUserdata).subscribe({
+      // return response;
+      next: (v) => console.log(v),
+      error: (e) => {
+        return e;
+      },
+      complete: () => console.info('complete')
+    })
   }
 }

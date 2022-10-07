@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(public showHideButtonService: ShowHideButtonServiceService, public router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
   }
 
   isShow(){
