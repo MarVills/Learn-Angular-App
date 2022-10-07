@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ShowHideButtonServiceService } from './show-hide-button-service.service';
+import { ShowHideButtonServiceService } from './services/show-hide-button-service.service';
 import { RouterModule,Routes, Router }from '@angular/router'; 
 
 

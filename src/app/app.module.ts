@@ -14,11 +14,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { ShowHideButtonServiceService } from './show-hide-button-service.service';
+import { ShowHideButtonServiceService } from './services/show-hide-button-service.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     MatIconModule,
     MatDialogModule,
     FormsModule,
+    HttpClientModule
   ],
   exports: [],
   providers: [ShowHideButtonServiceService],

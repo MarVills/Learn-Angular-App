@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShowHideButtonServiceService } from './show-hide-button-service.service';
+import { ShowHideButtonServiceService } from './services/show-hide-button-service.service';
 
 describe('ShowHideButtonServiceService', () => {
   let service: ShowHideButtonServiceService;

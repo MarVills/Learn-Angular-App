@@ -5,7 +5,6 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
-
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
