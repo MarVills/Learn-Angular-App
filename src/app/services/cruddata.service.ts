@@ -24,7 +24,8 @@ export class CRUDdataService {
   addData(data: any){
     return this.http.post<any>(environment.API_URL + 'api/products', data, this.config);
   }
-  // getProducts(){
-  //   return this.http.get<any>(environment.API_URL + 'api/products', this.config);
-  // }
+  updateData(id: number, data:any){
+    return this.http.put<any>(environment.API_URL + `api/products/${id}`, data, this.config);
+  }
+  
 }

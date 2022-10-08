@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators} from '@angular/forms';
 import { AppComponent } from '../app.component';
 import { ShowHideButtonServiceService } from '../services/show-hide-button-service.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-first',
@@ -10,7 +11,7 @@ import { ShowHideButtonServiceService } from '../services/show-hide-button-servi
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(public isShow: ShowHideButtonServiceService) { }
+  constructor(public isShow: ShowHideButtonServiceService, private authService: AuthService) { }
 
   show?: boolean;
 
@@ -35,6 +36,13 @@ export class LoginPageComponent implements OnInit {
      return this.isShow.setShow(show)
   }
 
- 
+  onLogin(data:any){
+    this.authService.loginUser(data).subscribe((response)=>{
+      console.log(response)
+    })
+
+  }
+
+  // 1012|PXclZAUT0pNgs3einBLsFLfzdun6W6Cvl79yHm6C
 
 }

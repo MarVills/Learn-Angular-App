@@ -3,25 +3,37 @@
         <mat-card-header>
             <div class="center-item header-title">Login Page</div>
         </mat-card-header>
-        <form class="example-form">
+        <form (ngSubmit)="onLogin(loginForm.value)" #loginForm="ngForm" class="example-form">
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Enter Email" value="">
+              <mat-label>Email</mat-label>
+              <input 
+              ngModel 
+              matInput 
+              placeholder="Enter Email" 
+              name="email"
+              value="">
           </mat-form-field>
           <br/>
           <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Enter password" value="">
+              <mat-label>Password</mat-label>
+              <input 
+              ngModel 
+              type="password" 
+              matInput 
+              placeholder="Enter password" 
+              value=""
+              name="password"
+              >
           </mat-form-field>
-          
-      </form>
-      <button routerLink="/register" mat-button color="primary">Register Account</button>
-      <br/>
-      <br/>
-      <button class="button-class" (click)="setShow(true)" routerLink="/dashboard" mat-raised-button color="primary">Login</button>
-      <br/>
-      <br/>
-      <!-- <button routerLink="/login" mat-raised-button color="primary"></button> -->
-      <button routerLink="/forgot-password" mat-button>Forgot Password?</button>
+          <button routerLink="/register" mat-button color="primary">Register Account</button>
+          <br/>
+          <br/>
+          <button class="button-class" routerLink mat-raised-button color="primary">Login</button>
+          <br/>
+          <br/>
+          <!-- <button routerLink="/login" mat-raised-button color="primary"></button> -->
+          <button routerLink="/forgot-password" mat-button>Forgot Password?</button>
+        </form>
+      
     </mat-card>
 </div>
