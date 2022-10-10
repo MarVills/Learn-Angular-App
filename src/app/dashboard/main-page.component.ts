@@ -19,7 +19,7 @@ export interface DialogData {
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   showFiller = false;
   filmIcon = faFilm;
@@ -162,12 +162,14 @@ openDialog: any;
   }
 
   onSubmit(linkData: any){
-    return this.mainService.updateData({
+    return this.mainService.updateData(
+      {
       "name": linkData.name,
       "image_link": linkData.image_link,
       "price": 0,
       "is_published": 0
-    }).subscribe((response)=>{
+      }
+    ).subscribe((response)=>{
       console.log(response)
       this.onFetchData();
     });
