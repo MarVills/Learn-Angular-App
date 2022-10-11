@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, Validators} from '@angular/forms';
-// import { AppComponent } from '../../app.component';
+import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
 import { ShowHideButtonServiceService } from '../../services/show-hide-button-service.service';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,38 +10,31 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(public isShow: ShowHideButtonServiceService, private authService: AuthService) { }
+  constructor( 
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    ) { }
+  ngOnInit(): void {this.registerForm()}
 
-  show?: boolean;
+ _loginForm!: FormGroup; 
 
-  ngOnInit(): void {
+  registerForm(){
+    this._loginForm = this.formBuilder.group({
+      email:  new FormControl("",[Validators.required, Validators.email]),
+      password: new FormControl("",[Validators.required, Validators.minLength(3)]),
+     });
   }
-
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  getShow(){
-    return this.isShow.getShow();
-  }
-
-  setShow(show: boolean){
-     return this.isShow.setShow(show)
-  }
-
-  onLogin(data:any){
-    this.authService.loginUser(data).subscribe((response)=>{
+  
+  onLogin(){
+    this.authService.loginUser(this._loginForm.value).subscribe((response)=>{
       console.log(response)
     })
-
   }
 
-  // 1012|PXclZAUT0pNgs3einBLsFLfzdun6W6Cvl79yHm6C
+  // getErrorMessage() {
+  //   if (this.email.hasError('required')) 
+  //     return 'You must enter a value';
+  //   return this.email.hasError('email') ? 'Not a valid email' : '';
+  // }
 
 }

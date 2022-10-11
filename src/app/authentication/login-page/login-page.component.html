@@ -3,32 +3,36 @@
         <mat-card-header>
             <div class="center-item header-title">Login Page</div>
         </mat-card-header>
-        <form (ngSubmit)="onLogin(loginForm.value)" #loginForm="ngForm" class="example-form">
-          <mat-form-field class="example-full-width" appearance="fill">
+        <form [formGroup]="_loginForm" class="example-form">
+            <div *ngIf="_loginForm.controls['email'].invalid && (_loginForm.controls['email'].dirty || _loginForm.controls['email'].touched)" class="alert">
+                <!-- <div *ngIf="_registerForm.controls['email'].errors.required"> -->
+                <div>
+                  
+                </div>
+            </div>
+          <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Email</mat-label>
               <input 
-              ngModel 
               matInput 
               placeholder="Enter Email" 
-              name="email"
-              value="">
+              formControlName="email"
+              >
           </mat-form-field>
+        
           <br/>
-          <mat-form-field class="example-full-width" appearance="fill">
+          <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Password</mat-label>
               <input 
-              ngModel 
               type="password" 
               matInput 
               placeholder="Enter password" 
-              value=""
-              name="password"
+              formControlName="password"
               >
           </mat-form-field>
           <button routerLink="/register" mat-button color="primary">Register Account</button>
           <br/>
           <br/>
-          <button class="button-class" routerLink mat-raised-button color="primary">Login</button>
+          <button (click)="onLogin()" [disabled]="!_loginForm.valid" mat-raised-button class="button-class" color="primary">Login</button>
           <br/>
           <br/>
           <!-- <button routerLink="/login" mat-raised-button color="primary"></button> -->

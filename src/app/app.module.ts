@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ShowHideButtonServiceService } from './services/show-hide-button-service.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import { RegisterPageComponent } from './authentication/register-page/register-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -47,7 +47,8 @@ import { SolutionDetailDialog } from './dashboard/main-page.component';
     MatIconModule,
     MatDialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports: [],
   providers: [ShowHideButtonServiceService],
