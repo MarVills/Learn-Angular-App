@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { userToken } from './handle-token.service';
+import { HandleTokenService } from './handle-token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CRUDdataService {
 
-  token= userToken;
+
 
   constructor(
     private http: HttpClient,
+    private handleToken: HandleTokenService,
     ) { }
   config = {
-    headers: new HttpHeaders({'Authorization': 'Bearer '+this.token})
+    headers: new HttpHeaders({'Authorization': 'Bearer '+this.handleToken.getToken()})
   }
   
   getDataList(): Observable<any>{
-    console.log("token used: "+this.token)
     var resposne$ = this.http.get<any>(environment.API_URL + 'api/products', this.config);
     return resposne$;
   }

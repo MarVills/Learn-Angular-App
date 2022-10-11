@@ -4,13 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HandleTokenService {
+  token_key = 'auth-token';
 
   constructor() { }
-  public saveToken(token: string) {
-    window.sessionStorage.removeItem(token);
-    window.sessionStorage.setItem(token, token);
+  saveToken(token: string) {
+    window.sessionStorage.removeItem(this.token_key);
+    window.sessionStorage.setItem(this.token_key, token);
   }
+  getToken(){
+    return sessionStorage.getItem(this.token_key);
+  }
+
+  // logout() {
+  //   this.tokenStorageService.signOut();
+  //   window.location.reload();
+  // }
+  signOut() {
+    window.sessionStorage.clear();
+  }
+
 
 }
 
-export const userToken:string = "836|Qf27omIg2hqswwy2Bb8a3hM7dNKMZlASoUYpBFeO";

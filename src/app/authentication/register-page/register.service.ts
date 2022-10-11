@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-import { userToken } from 'src/app/services/handle-token.service';
 import { Router } from '@angular/router';
+import { HandleTokenService } from 'src/app/services/handle-token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,8 @@ export class RegisterService {
     private registerUserService: AuthService,
     private router: Router,
     // private token: userToken,
+    private handleToken: HandleTokenService,
     ) { }
-
-  token = userToken;
 
   postUserData(fromUserdata: any){
     // this.registerUserService.registerUser(fromUserdata).subscribe(
@@ -37,15 +36,12 @@ export class RegisterService {
     this.registerUserService.registerUser(fromUserdata).subscribe(
       (response)=>{
         console.log(response.token)
-        this.token = response.token
-        // this.saveToken(response.token)
+        this.handleToken.saveToken(response.token)
         setTimeout(()=>{                       
           this.router.navigate(['/dashboard']);
       }, 3000);
       }).unsubscribe;
-      setTimeout(()=>{                       
-        console.log("handleToken: "+this.token)
-    }, 3000);
+     
   }
  
 }
