@@ -1,24 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SOLUTIONLINKS } from 'src/app/mock-solution-data';
-import { CRUDdataService } from 'src/app/shared/cruddata.service';
 import { DialogData } from '../../dashboard/dashboard.component';
 import { MainPageService } from '../../dashboard/dashboard.service';
-
-// @Component({
-//   selector: 'app-add-dialog',
-//   templateUrl: './add-dialog.component.html',
-//   styleUrls: ['./add-dialog.component.css']
-// })
-// export class AddDialogComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
 
 @Component({
   selector: 'dialog-overview-example-dialog',

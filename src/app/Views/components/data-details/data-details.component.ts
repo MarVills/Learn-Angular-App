@@ -5,20 +5,6 @@ import { CRUDdataService } from 'src/app/shared/cruddata.service';
 import { DialogData } from '../../dashboard/dashboard.component';
 import { MainPageService } from '../../dashboard/dashboard.service';
 
-// @Component({
-//   selector: 'app-data-details',
-//   templateUrl: './data-details.component.html',
-//   styleUrls: ['./data-details.component.css']
-// })
-// export class DataDetailsComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
-
 @Component({
   selector: 'solution-link-details',
   templateUrl: './data-details.component.html',
