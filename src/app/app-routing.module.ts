@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate :[AuthGuard] },
+  // { path: '', component: DashboardComponent, canActivate :[AuthGuard] },
   // { path: 'dashboard', component: DashboardComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' }

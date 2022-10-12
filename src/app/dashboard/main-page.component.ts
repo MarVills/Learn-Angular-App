@@ -5,6 +5,9 @@ import { SOLUTIONLINKS } from '../mock-solution-data';
 import { Link } from '../mock-solution-data';
 import { CRUDdataService } from '../shared/cruddata.service';
 import { MainPageService } from './main-page.service';
+import { HeaderVisibility } from '../shared/header-visibility.service';
+import { Router } from '@angular/router';
+import { HandleTokenService } from '../shared/handle-token.service';
 
 export interface DialogData {
   name: string;
@@ -31,7 +34,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private crudService: CRUDdataService , 
-    private mainService: MainPageService,) { }
+    private mainService: MainPageService,
+    public headerVisibility: HeaderVisibility, 
+    private router: Router,
+    private handleToken: HandleTokenService) { }
+
   ngOnInit(): void {
     this.mainService.fetchDataList()
   }
@@ -89,6 +96,16 @@ export class DashboardComponent implements OnInit {
       this.mainService.fetchDataList()
       
     });
+  }
+
+  // isShow(){
+  //   return this.headerVisibility.getShow();
+  // }
+
+  onLogout(){
+    this.handleToken.signOut();
+    this.headerVisibility.setShow(!this.handleToken.userLoggedIn);
+    this.router.navigate(['/login']);
   }
 
   
