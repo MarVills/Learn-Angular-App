@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, } from '@angular/forms';
-import { ShowHideButtonServiceService } from '../../services/show-hide-button-service.service';
-import { AuthService } from '../../services/auth.service';
+import { LoginService } from './login.service';
+import { HandleTokenService } from 'src/app/shared/handle-token.service';
+import { Router } from '@angular/router';
+import { HeaderVisibility } from 'src/app/shared/header-visibility.service';
+
 
 @Component({
   selector: 'app-first',
@@ -10,15 +13,18 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
+  _loginForm!: FormGroup; 
+
   constructor( 
-    private authService: AuthService,
     private formBuilder: FormBuilder,
-    ) { }
-  ngOnInit(): void {this.registerForm()}
+    private loginService: LoginService,
+    private handleToken: HandleTokenService,
+    private headerVisibility: HeaderVisibility,
+    private router: Router) { }
 
- _loginForm!: FormGroup; 
+  ngOnInit(): void {this.loginForm()}
 
-  registerForm(){
+  loginForm(){
     this._loginForm = this.formBuilder.group({
       email:  new FormControl("",[Validators.required, Validators.email]),
       password: new FormControl("",[Validators.required, Validators.minLength(3)]),
@@ -26,9 +32,18 @@ export class LoginPageComponent implements OnInit {
   }
   
   onLogin(){
-    this.authService.loginUser(this._loginForm.value).subscribe((response)=>{
-      console.log(response)
-    })
+    this.loginService.onLogin(this._loginForm.value).subscribe({
+      next: (response) => {
+        console.log(response.token)
+        this.handleToken.saveToken(response.token);
+        this.handleToken.saveUser(response);
+      },
+      error:(error) => console.log("LOGIN ERROR: "+error),
+      complete: () => {
+        this.headerVisibility.setShow(this.handleToken.userLoggedIn)
+        this.router.navigate(['/dashboard'])
+      } 
+    }).unsubscribe;
   }
 
   // getErrorMessage() {

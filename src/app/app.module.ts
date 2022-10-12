@@ -14,13 +14,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { ShowHideButtonServiceService } from './services/show-hide-button-service.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
 import { RegisterPageComponent } from './authentication/register-page/register-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { SolutionDetailDialog } from './dashboard/main-page.component';
+import { HeaderVisibility } from './shared/header-visibility.service';
+import { HandleTokenService } from './shared/handle-token.service';
+import { TokenInterceptorService } from './shared/token-interceptor.service';
+import { AuthGuardService } from './shared/auth.service';
 
 
 @NgModule({
@@ -51,7 +54,12 @@ import { SolutionDetailDialog } from './dashboard/main-page.component';
     ReactiveFormsModule
   ],
   exports: [],
-  providers: [ShowHideButtonServiceService],
+  providers: [
+    HeaderVisibility, 
+    HandleTokenService,
+    // AuthGuardService,
+    // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

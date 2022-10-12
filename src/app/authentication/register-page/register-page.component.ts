@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from './register.service';
+import { Router} from '@angular/router';
+import { HandleTokenService } from 'src/app/shared/handle-token.service';
+import { HeaderVisibility } from 'src/app/shared/header-visibility.service';
 
 @Component({
   selector: 'app-register-page',
@@ -9,13 +12,17 @@ import { RegisterService } from './register.service';
 })
 export class RegisterPageComponent implements OnInit {
 
+  _registerForm!: FormGroup; 
+
   constructor(
     private registerService: RegisterService,
     private formBuilder: FormBuilder,
-    ) { }
-  ngOnInit(): void {this.registerForm();}
-  _registerForm!: FormGroup; 
+    private handleToken: HandleTokenService,
+    private router: Router,
+    private headerVisibility: HeaderVisibility) { }
 
+  ngOnInit(): void {this.registerForm()}
+ 
   registerForm(){
     this._registerForm = this.formBuilder.group({
       name: ["",Validators.required],
@@ -26,9 +33,18 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onRegister(){
-    this.registerService.postUserData(this._registerForm.value);
-
+    this.registerService.postUserData(this._registerForm.value).subscribe({
+      next: (response) => {
+        console.log(response.token);
+        this.handleToken.saveToken(response.token);
+        this.handleToken.saveUser(response);     
+      },
+      error: (error) => console.log("REGISTER ERROR: "+error),
+      complete:()=> {
+        this.headerVisibility.setShow(this.handleToken.userLoggedIn)
+        this.router.navigate(['/dashboard'])
+      }
+    }).unsubscribe;
   }
-
 }
 

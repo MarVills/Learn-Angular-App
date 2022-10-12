@@ -3,7 +3,7 @@ import { faFilm } from '@fortawesome/free-solid-svg-icons';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { SOLUTIONLINKS } from '../mock-solution-data';
 import { Link } from '../mock-solution-data';
-import { CRUDdataService } from '../services/cruddata.service';
+import { CRUDdataService } from '../shared/cruddata.service';
 import { MainPageService } from './main-page.service';
 
 export interface DialogData {
@@ -135,20 +135,19 @@ openDialog: any;
   styleUrls: ['./main-page.component.css']
 })
 export class SolutionDetailDialog implements OnInit {
+  
   links = SOLUTIONLINKS;
-openDialog: any;
+  openDialog: any;
+
   constructor(
     public dialogRef: MatDialogRef<SolutionDetailDialog>,
     @Inject(MAT_DIALOG_DATA) public data:DialogData,
     private crudService: CRUDdataService,
-    private mainService: MainPageService,
-  ) {}
+    private mainService: MainPageService,) {}
 
   ngOnInit(): void {}
   
-  onNoClick(): void {
-   this.dialogRef.close(this.dialogRef);
-  }
+  onNoClick = (): void  => this.dialogRef.close(this.dialogRef);
 
   onFetchData(){
     this.links.splice(0);
@@ -157,8 +156,7 @@ openDialog: any;
       for (var  data of response.data) {
         this.links.push(data)
          console.log(data)
-      }
-    })
+      }})
   }
 
   onSubmit(linkData: any){
@@ -171,14 +169,12 @@ openDialog: any;
       }
     ).subscribe((response)=>{
       console.log(response)
-      this.onFetchData();
-    });
+      this.onFetchData()});
   }
   onDelete(){
     this.mainService.deleteData().subscribe((response)=>{
       console.log(response);
-      this.onFetchData();
-    })
+      this.onFetchData()})
   }
   goToLink(data: any){
     if(data.substring(0,11)=="https://www"|| data.substring(0,10)=="http://www" || data.substring(0,7)=="http://" || data.substring(0,8)=="https://"){

@@ -328,10 +328,7 @@
     />
     <span>Routing app in angular</span>
       <div class="spacer"></div>
-     
-      <div class="appbar_buttons" *ngIf="isShow()"><button routerLink="/login">Login</button></div>
-      <div class="appbar_buttons" *ngIf="isShow()"><button routerLink="/register">Signup</button></div>
-      <div (click)="setShow(false)" class="appbar_buttons" *ngIf="!isShow()"><button routerLink="/login">Logout</button></div>
+      <div  class="appbar_buttons"><button (click)="onLogout()">Logout</button></div>
   </div>
 </div>
 

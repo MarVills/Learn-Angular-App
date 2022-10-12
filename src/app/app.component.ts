@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ShowHideButtonServiceService } from './services/show-hide-button-service.service';
+import { HeaderVisibility } from './shared/header-visibility.service';
 import { RouterModule,Routes, Router }from '@angular/router'; 
+import { HandleTokenService } from './shared/handle-token.service';
 
 
 @Component({
@@ -10,22 +11,23 @@ import { RouterModule,Routes, Router }from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(public showHideButtonService: ShowHideButtonServiceService, public router: Router) { }
+  constructor(
+    public headerVisibility: HeaderVisibility, 
+    private router: Router,
+    private handleToken: HandleTokenService) { }
 
   ngOnInit() {
     // this.router.navigate(['/login']);
   }
 
   isShow(){
-    return this.showHideButtonService.getShow();
+    return this.headerVisibility.getShow();
   }
 
-  setShow(show: boolean){
-    this.showHideButtonService.setShow(show)
+  onLogout(){
+    this.handleToken.signOut();
+    this.headerVisibility.setShow(!this.handleToken.userLoggedIn);
+    this.router.navigate(['/login']);
   }
-
-  
-  
-
   title = 'routing_app';
 }

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ShowHideButtonServiceService {
+export class HeaderVisibility {
   constructor() { }
   show:boolean = false;
 

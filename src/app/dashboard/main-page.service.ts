@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SOLUTIONLINKS } from '../mock-solution-data';
-import { CRUDdataService } from '../services/cruddata.service';
+import { CRUDdataService } from '../shared/cruddata.service';
 
 @Injectable({
   providedIn: 'root'
