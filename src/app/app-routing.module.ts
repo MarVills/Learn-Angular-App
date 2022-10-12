@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CanActivate, RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './authentication/login-page/login-page.component';
-import { RegisterPageComponent } from './authentication/register-page/register-page.component';
-import { DashboardComponent } from './dashboard/main-page.component';
-import { ForgotPasswordComponent } from './authentication/forgot-password/forgot-password.component';
+import { LoginPageComponent } from './Views/authentication/login-page/login-page.component';
+import { RegisterPageComponent } from './Views/authentication/register-page/register-page.component';
+import { DashboardComponent } from './Views/dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './Views/authentication/forgot-password/forgot-password.component';
 // import { AuthGuardService } from './shared/auth.service';
 import { AuthGuard } from './shared/auth.guard';
 

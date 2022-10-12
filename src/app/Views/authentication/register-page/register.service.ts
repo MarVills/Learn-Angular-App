@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../shared/auth.service';
+import { AuthService } from '../../../shared/auth.service';
 
 @Injectable({
   providedIn: 'root'
