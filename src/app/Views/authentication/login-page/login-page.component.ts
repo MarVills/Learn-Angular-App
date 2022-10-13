@@ -22,7 +22,10 @@ export class LoginPageComponent implements OnInit {
     private headerVisibility: HeaderVisibility,
     private router: Router) { }
 
-  ngOnInit(): void {this.loginForm()}
+  ngOnInit(): void {
+    this.loginForm()
+    this.handleToken.autoLogin()
+  }
 
   loginForm(){
     this._loginForm = this.formBuilder.group({
@@ -37,6 +40,7 @@ export class LoginPageComponent implements OnInit {
         console.log(response.token)
         this.handleToken.saveToken(response.token);
         this.handleToken.saveUser(response);
+        this.handleToken.autoLogout();
       },
       error:(error) => console.log("LOGIN ERROR: "+error),
       complete: () => {
@@ -51,5 +55,6 @@ export class LoginPageComponent implements OnInit {
   //     return 'You must enter a value';
   //   return this.email.hasError('email') ? 'Not a valid email' : '';
   // }
+  // http://localhost:4200/
 
 }

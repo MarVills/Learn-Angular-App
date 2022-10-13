@@ -100,10 +100,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // isShow(){
-  //   return this.headerVisibility.getShow();
-  // }
-
   onLogout(){
     this.handleToken.signOut();
     this.headerVisibility.setShow(!this.handleToken.userLoggedIn);
@@ -113,8 +109,4 @@ export class DashboardComponent implements OnInit {
   
 }
 
-// ################################## add solution dialog ####################################
-
-
-// ################################## solution details dialog ####################################
 
