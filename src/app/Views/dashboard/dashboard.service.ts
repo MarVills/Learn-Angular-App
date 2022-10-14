@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SOLUTIONLINKS } from '../../mock-solution-data';
+import { SOLUTIONLINKS } from '../../data-model';
 import { CRUDdataService } from '../../shared/cruddata.service';
 
 @Injectable({

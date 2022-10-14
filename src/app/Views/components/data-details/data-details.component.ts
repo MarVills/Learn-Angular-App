@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SOLUTIONLINKS } from 'src/app/mock-solution-data';
+import { SOLUTIONLINKS } from 'src/app/data-model';
 import { CRUDdataService } from 'src/app/shared/cruddata.service';
 import { DialogData } from '../../dashboard/dashboard.component';
 import { MainPageService } from '../../dashboard/dashboard.service';

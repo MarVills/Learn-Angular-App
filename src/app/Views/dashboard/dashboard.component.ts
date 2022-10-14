@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { SOLUTIONLINKS } from '../../mock-solution-data';
-import { Link } from '../../mock-solution-data';
+import { SOLUTIONLINKS } from '../../data-model';
+import { Link } from '../../data-model';
 import { CRUDdataService } from '../../shared/cruddata.service';
 import { MainPageService } from './dashboard.service';
 import { HeaderVisibility } from '../../shared/header-visibility.service';
