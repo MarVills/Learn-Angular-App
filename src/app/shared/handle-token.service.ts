@@ -17,8 +17,8 @@ export class HandleTokenService {
   constructor(private router: Router) { }
 
   saveToken(token: string) {
-    window.sessionStorage.removeItem(this.token_key);
-    window.sessionStorage.setItem(this.token_key, token);
+    // window.sessionStorage.removeItem(this.token_key);
+    // window.sessionStorage.setItem(this.token_key, token);
     localStorage.removeItem(this.token_key);
     localStorage.setItem(this.token_key, token);
   }
@@ -28,8 +28,8 @@ export class HandleTokenService {
   }
 
   saveUser(user: any) {
-    window.sessionStorage.removeItem(this.user_key);
-    window.sessionStorage.setItem(this.user_key, JSON.stringify(user));
+    // window.sessionStorage.removeItem(this.user_key);
+    // window.sessionStorage.setItem(this.user_key, JSON.stringify(user));
     localStorage.removeItem(this.user_key);
     localStorage.setItem(this.user_key, JSON.stringify(user));
     localStorage.removeItem(this.token_expire_key);
@@ -37,11 +37,12 @@ export class HandleTokenService {
   }
   
   getUser() {
-    return JSON.parse(sessionStorage.getItem(this.user_key)!);
+    // return JSON.parse(sessionStorage.getItem(this.user_key)!);
+    return JSON.parse(localStorage.getItem(this.user_key)!);
   }
 
   signOut() {
-    window.sessionStorage.clear();
+    // window.sessionStorage.clear();
     localStorage.clear();
   }
   
