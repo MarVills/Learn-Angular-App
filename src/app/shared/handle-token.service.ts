@@ -34,12 +34,8 @@ export class HandleTokenService {
     localStorage.setItem(this.user_key, JSON.stringify(user));
     localStorage.removeItem(this.token_expire_key);
     localStorage.setItem(this.token_expire_key, user.user.created_at);
-    
-
-    // localStorage.setItem(this.user_key, JSON.stringify(user));
   }
-
-  // dataconvert = (localStorage.getItem(this.user_key))?.toString()
+  
   getUser() {
     return JSON.parse(sessionStorage.getItem(this.user_key)!);
   }
@@ -67,8 +63,6 @@ export class HandleTokenService {
       this.router.navigate(['/login']);
     }
   }
-// 2022-10-11T22:49:40.000000Z
-// 2022-10-11T22:49:40.000000Z
   autoLogin(){
     if(this.getToken() != "" && this.getToken() != null){
       this.router.navigate(['/dashboard']);

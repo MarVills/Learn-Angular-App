@@ -7,10 +7,10 @@ import { AuthService } from '../../../shared/auth.service';
 })
 export class RegisterService {
 
-  constructor(private registerUserService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   postUserData(fromUserdata: any): Observable<any>{
-    var response$ = this.registerUserService.registerUser(fromUserdata)
+    var response$ = this.authService.registerUser(fromUserdata)
     return response$;
   }
 }
