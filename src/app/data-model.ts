@@ -5,6 +5,4 @@ export interface Link {
     imageLink: string; 
   }
 
-export const SOLUTIONLINKS: Link[] = [
-  
-];
+export const SOLUTIONLINKS: Link[] = [];
