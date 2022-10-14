@@ -1,31 +1,40 @@
-<h1 mat-dialog-title>Add Problem Solution</h1>
-<form (ngSubmit)="onSubmit(dataForm.value)" #dataForm="ngForm">
+<h1 mat-dialog-title>Solution Details</h1>
+
+<form (ngSubmit)="onSubmit(solutionDetailsForm.value)" #solutionDetailsForm="ngForm">
   <div mat-dialog-content class="text-field">
-    <p>Enter Code Problem</p>
+    <p>Problem</p>
     <mat-form-field appearance="fill">
-      <mat-label>Code Problem</mat-label>
-
+      <mat-label>Problem</mat-label>
       <input 
-      [(ngModel)]="data.name" 
+      [(ngModel)]="data.name"
       matInput 
-      name="name">
-
+      type="text"
+      name="name"
+      >
     </mat-form-field>
   </div>
   <div mat-dialog-content class="text-field">
-    <p>Solution Link of the Code Problem</p>
+    <p>Solution Link</p>
     <mat-form-field appearance="fill">
       <mat-label>Solution Link</mat-label>
-
       <input 
-      [(ngModel)]="data.solutionLink" 
+      [(ngModel)]="data.solutionLink"
       matInput
-      name="image_link">
-      
+      type="text"
+      name="image_link"
+      >
     </mat-form-field>
   </div>
+  <button 
+    [mat-dialog-close]="" 
+    class="goto-link-button" 
+    mat-raised-button 
+    color="primary"
+    (click)="goToLink(data.solutionLink)"
+    >Go to Link</button>
   <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="">Cancel</button>
-    <button mat-button type="submit" [mat-dialog-close]="" cdkFocusInitial>Add</button>
+    <button mat-button [mat-dialog-close]="" (click)="onDelete()">Delete</button>
+    <button mat-button  [mat-dialog-close]=""  type="submit" cdkFocusInitial>Update</button>
   </div>
 </form>
+
